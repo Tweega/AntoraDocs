@@ -1,6 +1,6 @@
 = How Norsk-Live Can Help You and Your Team
 :keywords: Docs as Code, content management system, product team, documentation administration, documentation management, agile documentation, DocOps, documentation operations
-:navtitle: How Antora Can Help
+:navtitle: How Norsk Can Help
 
 ---
 SOme stuff here
