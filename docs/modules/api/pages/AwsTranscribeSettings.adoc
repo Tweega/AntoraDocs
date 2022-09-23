@@ -1,0 +1,16 @@
+== Interface AwsTranscribeSettings, extends xref:document-b.adoc#section-b[NodeSettings]
+:table-caption!:
+:example-caption!:
+.Properties
+[cols="15%,35%, 50%"]
+|===
+|Property |Type |Comment
+|awsRegion | string
+| some comment here
+|awsAccessKeyId | string
+| some comment here
+|awsSecretAccessKey | string
+| some comment here
+|outputStreamId | number
+| some comment here
+|===

@@ -1,0 +1,10 @@
+== Interface ComposeVideoSettingsUpdate
+:table-caption!:
+:example-caption!:
+.Properties
+[cols="15%,35%, 50%"]
+|===
+|Property |Type |Comment
+|parts | ComposePart
+| some comment here
+|===

@@ -1,0 +1,11 @@
+== Interface NorskControl
+:table-caption!:
+:example-caption!:
+[cols="15%,35%, 15%, 35%"]
+|===
+|Method |Parameters |Return value |Comment
+|sourceSwitcher a|
+[unstyled]
+* [yellow]#settings#: SourceSwitcherSettings
+|Promise<SourceSwitcherNode> | some comment here
+|===

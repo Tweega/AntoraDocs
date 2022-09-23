@@ -1,0 +1,39 @@
+== Interface NorskInput
+:table-caption!:
+:example-caption!:
+[cols="15%,35%, 15%, 35%"]
+|===
+|Method |Parameters |Return value |Comment
+|rtmpServer a|
+[unstyled]
+* [yellow]#settings#: RtmpServerInputSettings
+|Promisec<xref:document-b.adoc#section-b[RtmpServerInputNode]> | some comment here
+|localTsFile a|
+[unstyled]
+* [yellow]#settings#: LocalFileInputSettings
+|Promise<TsFileSourceNode> | some comment here
+|srt a|
+[unstyled]
+* [yellow]#settings#: SrtInputSettings
+|Promise<SrtSourceNode> | some comment here
+|whip a|
+[unstyled]
+* [yellow]#settings#: WhipInputSettings
+|Promise<WhipSourceNode> | some comment here
+|m3u8Media a|
+[unstyled]
+* [yellow]#settings#: M3u8MediaInputSettings
+|Promise<M3u8SourceNode> | some comment here
+|udpTs a|
+[unstyled]
+* [yellow]#settings#: RemoteInputSettings
+|Promise<UdpTsSourceNode> | some comment here
+|localWebVttFile a|
+[unstyled]
+* [yellow]#settings#: LocalFileInputSettings
+|Promise<WebVttFileSourceNode> | some comment here
+|imageFile a|
+[unstyled]
+* [yellow]#settings#: LocalFileInputSettings
+|Promise<ImageFileSourceNode> | some comment here
+|===

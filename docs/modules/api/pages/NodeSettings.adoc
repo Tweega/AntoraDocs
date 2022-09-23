@@ -1,0 +1,10 @@
+== Interface NodeSettings
+:table-caption!:
+:example-caption!:
+.Properties
+[cols="15%,35%, 50%"]
+|===
+|Property |Type |Comment
+|id? | string
+| some comment here
+|===
