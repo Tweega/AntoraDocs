@@ -1,0 +1,19 @@
+== Interface NorskTransform
+:table-caption!:
+:example-caption!:
+[cols="15%,35%, 15%, 35%"]
+|===
+|Method |Parameters |Return value |Comment
+|h264Ladder a|
+[unstyled]
+* [yellow]#settings#: H264LadderSettings
+|Promise<H264LadderNode> | some comment here
+|string> a|
+[unstyled]
+* [yellow]#settings#: ComposeVideoSettings<Pins>
+|Promise<ComposeVideoNode<Pins>> | some comment here
+|awsTranscribe a|
+[unstyled]
+* [yellow]#settings#: AwsTranscribeSettings
+|Promise<AwsTranscribeNode> | some comment here
+|===

@@ -1,17 +1,11 @@
 = Norsk Documentation
-:keywords: Docs as Code, DocOps, content management system, docs writers, publish software documentation, CI and docs, CD and docs
+:keywords: Norsk Live, Video streaming, Green box, 
 
 [discrete.tagline]
 === Developing applications for Norsk Live
-  This is a guide to customising Norsk applications to provide
-      production-room control over live video and audio streams.  
-      This customisation can be done via a language specific SDK - in this case TypeScript.
-      The full list of supported languages is ..
+  This is a guide to customising Norsk applications to provide production-room control over live video and audio streams.  This customisation can be done via a language-specific SDK.
+  
+  The full list of supported languages is ..
 
-
-      SO I now have a good idea how Ascii docs hangs together and have produced this site from local files, albeit with files pulled from Antora, which is a wrapper around AsciiDocs that provides customisable layouts 
-      
-      
-
-
+  * Typescript
 

@@ -1,0 +1,14 @@
+== Class LocalWebRTCOutputNode
+:table-caption!:
+:example-caption!:
+No construcros
+
+[cols="15%,35%, 15%, 35%"]
+|===
+|Static Method |Parameters |Return value |Comment
+|create a|
+[unstyled]
+* [yellow]#settings#: LocalWebRTCOutputSettings
+* [yellow]#client#: MediaClient
+|Promisec<xref:document-b.adoc#section-b[LocalWebRTCOutputNode]> | some comment here
+|===

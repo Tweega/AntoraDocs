@@ -1,0 +1,89 @@
+== Class StreamMetadata
+:table-caption!:
+:example-caption!:
+No construcros
+
+[cols="15%,35%, 15%, 35%"]
+|===
+|Static Method |Parameters |Return value |Comment
+|toObject a|
+[unstyled]
+* [yellow]#includeInstance#: boolean
+* [yellow]#msg#: StreamMetadata
+|StreamMetadata.AsObject | some comment here
+|serializeBinaryToWriter a|
+[unstyled]
+* [yellow]#message#: StreamMetadata
+* [yellow]#writer#: jspb.BinaryWriter
+|void | some comment here
+|deserializeBinary a|
+[unstyled]
+* [yellow]#bytes#: Uint8Array
+|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|deserializeBinaryFromReader a|
+[unstyled]
+* [yellow]#message#: StreamMetadata
+* [yellow]#reader#: jspb.BinaryReader
+|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|===
+.Properties
+[cols="15%,35%, 50%"]
+|===
+|Property |Type |Comment
+|extensions | jspb.ExtensionFieldInfo<jspb.Message>
+| some comment here
+|extensionsBinary | jspb.ExtensionFieldBinaryInfo<jspb.Message>
+| some comment here
+|===
+[cols="15%,35%, 15%, 35%"]
+|===
+|Method |Parameters |Return value |Comment
+|hasStreamKey a|
+|boolean | some comment here
+|clearStreamKey a|
+|void | some comment here
+|getStreamKey a|
+|StreamKey \| undefined | some comment here
+|setStreamKey a|
+[unstyled]
+* [yellow]#value?#: StreamKey
+|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|hasAudio a|
+|boolean | some comment here
+|clearAudio a|
+|void | some comment here
+|getAudio a|
+|StreamMetadata.AudioMetadata \| undefined | some comment here
+|setAudio a|
+[unstyled]
+* [yellow]#value?#: StreamMetadata.AudioMetadata
+|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|hasVideo a|
+|boolean | some comment here
+|clearVideo a|
+|void | some comment here
+|getVideo a|
+|StreamMetadata.VideoMetadata \| undefined | some comment here
+|setVideo a|
+[unstyled]
+* [yellow]#value?#: StreamMetadata.VideoMetadata
+|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|hasSubtitle a|
+|boolean | some comment here
+|clearSubtitle a|
+|void | some comment here
+|getSubtitle a|
+|StreamMetadata.SubtitleMetadata \| undefined | some comment here
+|setSubtitle a|
+[unstyled]
+* [yellow]#value?#: StreamMetadata.SubtitleMetadata
+|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|getMessageCase a|
+|StreamMetadata.MessageCase | some comment here
+|serializeBinary a|
+|Uint8Array | some comment here
+|toObject a|
+[unstyled]
+* [yellow]#includeInstance?#: boolean
+|StreamMetadata.AsObject | some comment here
+|===

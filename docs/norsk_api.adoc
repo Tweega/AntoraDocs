@@ -1,0 +1,52 @@
+
+= class MediaNodeId
+:table-caption!:
+:example-caption!:
+
+.Constructor
+====
+[unstyled]
+* new [yellow]#MediaNodeId#()
+====
+
+[cols="15%,85%"]
+|===
+|Method |Parameters
+
+|getId |None
+|setId a|
+[unstyled]
+* value:: string
+|===
+
+[cols="15%,35%, 15%, 35%"]
+|===
+|Static Method |Parameters |Return value |Comment
+
+|toObject a|
+[unstyled]
+* [yellow]#includeInstance?# : boolean
+|MediaNodeId | some comment here
+|serializeBinaryToWriter a|
+[unstyled]
+* [yellow]#message?# : MediaNodeId
+* [yellow]#writer# : jspb.BinaryWriter
+|void | some comment here
+|===
+
+[none]
+* hello
+
+export class MediaNodeId extends jspb.Message { 
+    getId(): string;
+    setId(value: string): MediaNodeId;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): MediaNodeId.AsObject;
+    static toObject(includeInstance: boolean, msg: MediaNodeId): MediaNodeId.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+        static serializeBinaryToWriter(message: MediaNodeId, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): MediaNodeId;
+    static deserializeBinaryFromReader(message: MediaNodeId, reader: jspb.BinaryReader): MediaNodeId;
+}
