@@ -1,7 +1,7 @@
 == Class X264Codec
 :table-caption!:
 :example-caption!:
-No construcros
+No constructors
 
 [cols="15%,35%, 15%, 35%"]
 |===

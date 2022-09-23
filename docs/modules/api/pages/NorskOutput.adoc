@@ -19,13 +19,13 @@
 |hlsMaster a|
 [unstyled]
 * [yellow]#settings#: HlsMasterOutputSettings
-|Promisec<xref:HlsMasterOutputNode.adoc[HlsMasterOutputNode]> | some comment here
+|Promise<xref:HlsMasterOutputNode.adoc[HlsMasterOutputNode]> | some comment here
 |webRTCWhip a|
 [unstyled]
 * [yellow]#settings#: WebRTCWhipOutputSettings
-|Promisec<xref:WebRTCWhipOutputNode.adoc[WebRTCWhipOutputNode]> | some comment here
+|Promise<xref:WebRTCWhipOutputNode.adoc[WebRTCWhipOutputNode]> | some comment here
 |localWebRTC a|
 [unstyled]
 * [yellow]#settings#: LocalWebRTCOutputSettings
-|Promisec<xref:LocalWebRTCOutputNode.adoc[LocalWebRTCOutputNode]> | some comment here
+|Promise<xref:LocalWebRTCOutputNode.adoc[LocalWebRTCOutputNode]> | some comment here
 |===

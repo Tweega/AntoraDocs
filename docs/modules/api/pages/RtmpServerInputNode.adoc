@@ -1,7 +1,7 @@
 == Class RtmpServerInputNode, extends xref:SourceMediaNode.adoc[SourceMediaNode]
 :table-caption!:
 :example-caption!:
-No construcros
+No constructors
 
 [cols="15%,35%, 15%, 35%"]
 |===
@@ -10,5 +10,5 @@ No construcros
 [unstyled]
 * [yellow]#settings#: RtmpServerInputSettings
 * [yellow]#client#: MediaClient
-|Promisec<xref:RtmpServerInputNode.adoc[RtmpServerInputNode]> | some comment here
+|Promise<xref:RtmpServerInputNode.adoc[RtmpServerInputNode]> | some comment here
 |===

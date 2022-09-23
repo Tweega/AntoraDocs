@@ -4,7 +4,7 @@
 .Constructor
 ====
 [unstyled]
-* new     [yellow]#Norsk#(url: string)
+* new [yellow]#Norsk#(url: string)
 ====
 .Properties
 [cols="15%,35%, 50%"]

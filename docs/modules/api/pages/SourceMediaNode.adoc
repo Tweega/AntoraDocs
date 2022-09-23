@@ -1,7 +1,7 @@
 == Class SourceMediaNode
 :table-caption!:
 :example-caption!:
-No construcros
+No constructors
 
 .Properties
 [cols="15%,35%, 50%"]

@@ -7,7 +7,7 @@
 |rtmpServer a|
 [unstyled]
 * [yellow]#settings#: RtmpServerInputSettings
-|Promisec<xref:RtmpServerInputNode.adoc[RtmpServerInputNode]> | some comment here
+|Promise<xref:RtmpServerInputNode.adoc[RtmpServerInputNode]> | some comment here
 |localTsFile a|
 [unstyled]
 * [yellow]#settings#: LocalFileInputSettings

@@ -1,7 +1,7 @@
 == Class WebRTCWhipOutputNode
 :table-caption!:
 :example-caption!:
-No construcros
+No constructors
 
 [cols="15%,35%, 15%, 35%"]
 |===
@@ -10,5 +10,5 @@ No construcros
 [unstyled]
 * [yellow]#settings#: WebRTCWhipOutputSettings
 * [yellow]#client#: MediaClient
-|Promisec<xref:WebRTCWhipOutputNode.adoc[WebRTCWhipOutputNode]> | some comment here
+|Promise<xref:WebRTCWhipOutputNode.adoc[WebRTCWhipOutputNode]> | some comment here
 |===

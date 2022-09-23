@@ -1,7 +1,7 @@
 == Class HlsMasterOutputNode
 :table-caption!:
 :example-caption!:
-No construcros
+No constructors
 
 [cols="15%,35%, 15%, 35%"]
 |===
@@ -10,5 +10,5 @@ No construcros
 [unstyled]
 * [yellow]#settings#: HlsMasterOutputSettings
 * [yellow]#client#: MediaClient
-|Promisec<xref:HlsMasterOutputNode.adoc[HlsMasterOutputNode]> | some comment here
+|Promise<xref:HlsMasterOutputNode.adoc[HlsMasterOutputNode]> | some comment here
 |===

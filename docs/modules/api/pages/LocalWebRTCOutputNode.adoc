@@ -1,7 +1,7 @@
 == Class LocalWebRTCOutputNode
 :table-caption!:
 :example-caption!:
-No construcros
+No constructors
 
 [cols="15%,35%, 15%, 35%"]
 |===
@@ -10,5 +10,5 @@ No construcros
 [unstyled]
 * [yellow]#settings#: LocalWebRTCOutputSettings
 * [yellow]#client#: MediaClient
-|Promisec<xref:LocalWebRTCOutputNode.adoc[LocalWebRTCOutputNode]> | some comment here
+|Promise<xref:LocalWebRTCOutputNode.adoc[LocalWebRTCOutputNode]> | some comment here
 |===
