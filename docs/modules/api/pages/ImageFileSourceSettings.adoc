@@ -1,4 +1,4 @@
-== Interface ImageFileSourceSettings, extends xref:document-b.adoc#section-b[NodeSettings]
+== Interface ImageFileSourceSettings, extends xref:NodeSettings.adoc[NodeSettings]
 :table-caption!:
 :example-caption!:
 .Properties

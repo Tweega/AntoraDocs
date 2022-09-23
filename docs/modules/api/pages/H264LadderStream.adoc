@@ -13,8 +13,8 @@
 | some comment here
 |bitrate | number
 | some comment here
-|frameRate | xref:document-b.adoc#section-b[FrameRate]
+|frameRate | xref:FrameRate.adoc[FrameRate]
 | some comment here
-|codec | xref:document-b.adoc#section-b[X264Codec]
+|codec | xref:X264Codec.adoc[X264Codec]
 | some comment here
 |===

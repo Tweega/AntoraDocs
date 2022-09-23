@@ -1,4 +1,4 @@
-== Interface InputSettings, extends xref:document-b.adoc#section-b[NodeSettings]
+== Interface InputSettings, extends xref:NodeSettings.adoc[NodeSettings]
 :table-caption!:
 :example-caption!:
 .Properties

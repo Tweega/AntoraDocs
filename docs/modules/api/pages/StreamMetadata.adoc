@@ -19,12 +19,12 @@ No construcros
 |deserializeBinary a|
 [unstyled]
 * [yellow]#bytes#: Uint8Array
-|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|xref:StreamMetadata.adoc[StreamMetadata] | some comment here
 |deserializeBinaryFromReader a|
 [unstyled]
 * [yellow]#message#: StreamMetadata
 * [yellow]#reader#: jspb.BinaryReader
-|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|xref:StreamMetadata.adoc[StreamMetadata] | some comment here
 |===
 .Properties
 [cols="15%,35%, 50%"]
@@ -47,7 +47,7 @@ No construcros
 |setStreamKey a|
 [unstyled]
 * [yellow]#value?#: StreamKey
-|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|xref:StreamMetadata.adoc[StreamMetadata] | some comment here
 |hasAudio a|
 |boolean | some comment here
 |clearAudio a|
@@ -57,7 +57,7 @@ No construcros
 |setAudio a|
 [unstyled]
 * [yellow]#value?#: StreamMetadata.AudioMetadata
-|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|xref:StreamMetadata.adoc[StreamMetadata] | some comment here
 |hasVideo a|
 |boolean | some comment here
 |clearVideo a|
@@ -67,7 +67,7 @@ No construcros
 |setVideo a|
 [unstyled]
 * [yellow]#value?#: StreamMetadata.VideoMetadata
-|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|xref:StreamMetadata.adoc[StreamMetadata] | some comment here
 |hasSubtitle a|
 |boolean | some comment here
 |clearSubtitle a|
@@ -77,7 +77,7 @@ No construcros
 |setSubtitle a|
 [unstyled]
 * [yellow]#value?#: StreamMetadata.SubtitleMetadata
-|xref:document-b.adoc#section-b[StreamMetadata] | some comment here
+|xref:StreamMetadata.adoc[StreamMetadata] | some comment here
 |getMessageCase a|
 |StreamMetadata.MessageCase | some comment here
 |serializeBinary a|

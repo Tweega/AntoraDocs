@@ -1,4 +1,4 @@
-== Interface HlsWebVttOutputSettings, extends xref:document-b.adoc#section-b[NodeSettings]
+== Interface HlsWebVttOutputSettings, extends xref:NodeSettings.adoc[NodeSettings]
 :table-caption!:
 :example-caption!:
 .Properties

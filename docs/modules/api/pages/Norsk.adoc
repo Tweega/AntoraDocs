@@ -10,12 +10,12 @@
 [cols="15%,35%, 50%"]
 |===
 |Property |Type |Comment
-|input | xref:document-b.adoc#section-b[NorskInput]
+|input | xref:NorskInput.adoc[NorskInput]
 | some comment here
-|output | xref:document-b.adoc#section-b[NorskOutput]
+|output | xref:NorskOutput.adoc[NorskOutput]
 | some comment here
-|control | xref:document-b.adoc#section-b[NorskControl]
+|control | xref:NorskControl.adoc[NorskControl]
 | some comment here
-|transform | xref:document-b.adoc#section-b[NorskTransform]
+|transform | xref:NorskTransform.adoc[NorskTransform]
 | some comment here
 |===

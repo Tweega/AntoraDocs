@@ -1,4 +1,4 @@
-== Interface AwsTranscribeSettings, extends xref:document-b.adoc#section-b[NodeSettings]
+== Interface AwsTranscribeSettings, extends xref:NodeSettings.adoc[NodeSettings]
 :table-caption!:
 :example-caption!:
 .Properties

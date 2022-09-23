@@ -1,4 +1,4 @@
-== Interface LocalWebRTCOutputSettings, extends xref:document-b.adoc#section-b[NodeSettings]
+== Interface LocalWebRTCOutputSettings, extends xref:NodeSettings.adoc[NodeSettings]
 :table-caption!:
 :example-caption!:
 .Properties

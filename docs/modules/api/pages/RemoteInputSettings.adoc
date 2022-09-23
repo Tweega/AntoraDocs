@@ -1,4 +1,4 @@
-== Interface RemoteInputSettings, extends xref:document-b.adoc#section-b[InputSettings]
+== Interface RemoteInputSettings, extends xref:InputSettings.adoc[InputSettings]
 :table-caption!:
 :example-caption!:
 .Properties

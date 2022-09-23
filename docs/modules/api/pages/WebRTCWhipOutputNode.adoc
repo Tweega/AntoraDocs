@@ -10,5 +10,5 @@ No construcros
 [unstyled]
 * [yellow]#settings#: WebRTCWhipOutputSettings
 * [yellow]#client#: MediaClient
-|Promisec<xref:document-b.adoc#section-b[WebRTCWhipOutputNode]> | some comment here
+|Promisec<xref:WebRTCWhipOutputNode.adoc[WebRTCWhipOutputNode]> | some comment here
 |===

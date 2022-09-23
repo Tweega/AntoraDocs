@@ -19,12 +19,12 @@ No construcros
 |deserializeBinary a|
 [unstyled]
 * [yellow]#bytes#: Uint8Array
-|xref:document-b.adoc#section-b[MediaNodeId] | some comment here
+|xref:MediaNodeId.adoc[MediaNodeId] | some comment here
 |deserializeBinaryFromReader a|
 [unstyled]
 * [yellow]#message#: MediaNodeId
 * [yellow]#reader#: jspb.BinaryReader
-|xref:document-b.adoc#section-b[MediaNodeId] | some comment here
+|xref:MediaNodeId.adoc[MediaNodeId] | some comment here
 |===
 .Properties
 [cols="15%,35%, 50%"]
@@ -43,7 +43,7 @@ No construcros
 |setId a|
 [unstyled]
 * [yellow]#value#: string
-|xref:document-b.adoc#section-b[MediaNodeId] | some comment here
+|xref:MediaNodeId.adoc[MediaNodeId] | some comment here
 |serializeBinary a|
 |Uint8Array | some comment here
 |toObject a|

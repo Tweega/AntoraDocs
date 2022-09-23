@@ -19,12 +19,12 @@ No construcros
 |deserializeBinary a|
 [unstyled]
 * [yellow]#bytes#: Uint8Array
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |deserializeBinaryFromReader a|
 [unstyled]
 * [yellow]#message#: X264Codec
 * [yellow]#reader#: jspb.BinaryReader
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |===
 .Properties
 [cols="15%,35%, 50%"]
@@ -47,7 +47,7 @@ No construcros
 |setAbr a|
 [unstyled]
 * [yellow]#value#: number
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasCqp a|
 |boolean | some comment here
 |clearCqp a|
@@ -57,7 +57,7 @@ No construcros
 |setCqp a|
 [unstyled]
 * [yellow]#value#: number
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasCrf a|
 |boolean | some comment here
 |clearCrf a|
@@ -67,13 +67,13 @@ No construcros
 |setCrf a|
 [unstyled]
 * [yellow]#value#: number
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |getProfile a|
 |X264Codec.X264Profile | some comment here
 |setProfile a|
 [unstyled]
 * [yellow]#value#: X264Codec.X264Profile
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasLevel a|
 |boolean | some comment here
 |clearLevel a|
@@ -83,7 +83,7 @@ No construcros
 |setLevel a|
 [unstyled]
 * [yellow]#value?#: X264Int
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasKeyFrameIntervalMin a|
 |boolean | some comment here
 |clearKeyFrameIntervalMin a|
@@ -93,7 +93,7 @@ No construcros
 |setKeyFrameIntervalMin a|
 [unstyled]
 * [yellow]#value?#: X264Int
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasKeyFrameIntervalMax a|
 |boolean | some comment here
 |clearKeyFrameIntervalMax a|
@@ -103,7 +103,7 @@ No construcros
 |setKeyFrameIntervalMax a|
 [unstyled]
 * [yellow]#value?#: X264Int
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasBframes a|
 |boolean | some comment here
 |clearBframes a|
@@ -113,19 +113,19 @@ No construcros
 |setBframes a|
 [unstyled]
 * [yellow]#value?#: X264Int
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |getTune a|
 |X264Codec.X264Tune | some comment here
 |setTune a|
 [unstyled]
 * [yellow]#value#: X264Codec.X264Tune
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |getPreset a|
 |X264Codec.X264Preset | some comment here
 |setPreset a|
 [unstyled]
 * [yellow]#value#: X264Codec.X264Preset
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasFrameReference a|
 |boolean | some comment here
 |clearFrameReference a|
@@ -135,7 +135,7 @@ No construcros
 |setFrameReference a|
 [unstyled]
 * [yellow]#value?#: X264Int
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasCabac a|
 |boolean | some comment here
 |clearCabac a|
@@ -145,7 +145,7 @@ No construcros
 |setCabac a|
 [unstyled]
 * [yellow]#value?#: X264Bool
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasVbvMaxRate a|
 |boolean | some comment here
 |clearVbvMaxRate a|
@@ -155,7 +155,7 @@ No construcros
 |setVbvMaxRate a|
 [unstyled]
 * [yellow]#value?#: X264Int
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasVbvBufferSize a|
 |boolean | some comment here
 |clearVbvBufferSize a|
@@ -165,7 +165,7 @@ No construcros
 |setVbvBufferSize a|
 [unstyled]
 * [yellow]#value?#: X264Int
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasSceneCut a|
 |boolean | some comment here
 |clearSceneCut a|
@@ -175,7 +175,7 @@ No construcros
 |setSceneCut a|
 [unstyled]
 * [yellow]#value?#: X264Int
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasAud a|
 |boolean | some comment here
 |clearAud a|
@@ -185,7 +185,7 @@ No construcros
 |setAud a|
 [unstyled]
 * [yellow]#value?#: X264Bool
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasNoDeblock a|
 |boolean | some comment here
 |clearNoDeblock a|
@@ -195,13 +195,13 @@ No construcros
 |setNoDeblock a|
 [unstyled]
 * [yellow]#value?#: X264Bool
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |getNalHrd a|
 |X264Codec.X264NalHrd | some comment here
 |setNalHrd a|
 [unstyled]
 * [yellow]#value#: X264Codec.X264NalHrd
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |hasSar a|
 |boolean | some comment here
 |clearSar a|
@@ -211,7 +211,7 @@ No construcros
 |setSar a|
 [unstyled]
 * [yellow]#value?#: SampleAspectRatio
-|xref:document-b.adoc#section-b[X264Codec] | some comment here
+|xref:X264Codec.adoc[X264Codec] | some comment here
 |getBitratemodeCase a|
 |X264Codec.BitratemodeCase | some comment here
 |serializeBinary a|

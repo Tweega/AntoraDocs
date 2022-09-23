@@ -10,5 +10,5 @@ No construcros
 [unstyled]
 * [yellow]#settings#: LocalWebRTCOutputSettings
 * [yellow]#client#: MediaClient
-|Promisec<xref:document-b.adoc#section-b[LocalWebRTCOutputNode]> | some comment here
+|Promisec<xref:LocalWebRTCOutputNode.adoc[LocalWebRTCOutputNode]> | some comment here
 |===

@@ -1,4 +1,4 @@
-== Interface SrtInputSettings, extends xref:document-b.adoc#section-b[RemoteInputSettings]
+== Interface SrtInputSettings, extends xref:RemoteInputSettings.adoc[RemoteInputSettings]
 :table-caption!:
 :example-caption!:
 .Properties
