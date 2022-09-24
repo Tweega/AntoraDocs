@@ -1,0 +1,20 @@
+== What a Norsk-Live application does
+
+
+* [.big .aqua]#Defines audio and video input streams#
+** Location (ip address) to which each stream is published
+** Encoding type
+** Other source-specific configuration details
+* [.big .aqua]#Informs the Norsk Server about these inputs and where to deliver them#
+** the location of this server needs to be specified in code
+** Plus a set of encodings that should be delivered to those targets
+** Also a ladder of quality levels
+* [.big .aqua]#Specifies in real-time#
+** which input streams should be published to the delivery target(s)
+*** ..i.e. switching between cameras
+** whether any special effect should be applied
+*** ...for example, whether one video stream should partially overlay another
+* [.big .aqua]#Reacts to messages from the Norsk Server#
+** for example, Norsk will inform the client app after it has received and validated an input stream definition (referred to in the first line of this list)
+** Client code must acknowledge server messages.
+

@@ -3,13 +3,6 @@
 :example-caption!:
 No constructors
 
-.Properties
-[cols="15%,35%, 50%"]
-|===
-|Property |Type |Comment
-|protected recipients | SendToAddress
-| some comment here
-|===
 [cols="15%,35%, 15%, 35%"]
 |===
 |Method |Parameters |Return value |Comment
