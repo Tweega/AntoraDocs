@@ -26,9 +26,9 @@ const selectAV(streams: StreamMetadata[]) => {
   }
 ----
 
-The logic implemented here is arbitrary, and in this case, simple.  If Norsk indicates that it has exactly one audio and one video signal, then it should forward both streams.  However, you can implement any logic here that meets your business requirements, which might for example be to always favour a particular named stream if it is available.
+The logic implemented here is arbitrary, and in this case, simple.  It states that if Norsk indicates that it has exactly one audio and one video signal, then it should forward both streams.  However, you can implement any logic here that meets your business requirements, which might for example be to always favour a particular named stream if it is available.
 
-The functions audioStreamKeys, and videoStreamKeys are simple functions on the sdk which filter the streams list to only those that are audio streams or video streams respectively.
+The functions audioStreamKeys, and videoStreamKeys are simple functions on the sdk which filter the streams list to only those that are audio streams or video streams respectively.  There's also one called subtitleStreams.
 
 ===Setting stream keys
 
