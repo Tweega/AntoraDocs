@@ -1,0 +1,83 @@
+== Target Configuration
+
+The example shown so far have sent input streams to an rtc web server created by Norsk
+
+As with source configuration, target configuration  is defined hierarchically in the sdk, with all nodes (things that process stream data) requiring an id, all inputs require a source name, and external inputs require an ip address and port number.  Other input types require additional data; srt streams, for instance, need to know if the stream will be pushed to the Norsk server, or pulled from it.  The following settings definitions are defined in the sdk
+
+[source,TypeScript]
+----
+export interface NodeSettings {
+    id?: string;
+}
+interface LocalWebRTCOutputSettings extends NodeSettings {
+    numVideoStreams: number;
+}
+interface HlsMasterOutputSettings extends NodeSettings {
+    playlistName: string;
+}
+interface HlsVideoOutputSettings extends NodeSettings {
+    segmentDurationSeconds: number;
+    partDurationSeconds: number;
+    delayOutputMs: number;
+}
+interface HlsWebVttOutputSettings extends NodeSettings {
+    segmentDurationSeconds: number;
+    delayOutputMs: number;
+}
+interface SourceSwitcherSettings extends NodeSettings {
+    activeSource: string;
+    outputSource: string;
+}
+interface H264LadderSettings extends NodeSettings {
+    streams: H264LadderStream[];
+}
+----
+
+... where the definition for H264LadderStream is given here.
+
+
+Each input type also has its corresponding constructor on the Norsk.output object.  The list of constructors is shown below
+
+== Interface NorskOutput
+:table-caption!:
+:example-caption!:
+[cols="15%,35%, 15%, 35%"]
+|===
+|Method |Parameters |Return value |Comment
+|hlsVideo a|
+[unstyled]
+* [yellow]#settings#: HlsVideoOutputSettings
+|Promise<HlsVideoOutputNode> | some comment here
+|hlsAudio a|
+[unstyled]
+* [yellow]#settings#: HlsAudioOutputSettings
+|Promise<HlsAudioOutputNode> | some comment here
+|hlsWebVtt a|
+[unstyled]
+* [yellow]#settings#: HlsWebVttOutputSettings
+|Promise<HlsWebVttOutputNode> | some comment here
+|hlsMaster a|
+[unstyled]
+* [yellow]#settings#: HlsMasterOutputSettings
+|Promise<xref:HlsMasterOutputNode.adoc[HlsMasterOutputNode]> | some comment here
+|webRTCWhip a|
+[unstyled]
+* [yellow]#settings#: WebRTCWhipOutputSettings
+|Promise<xref:WebRTCWhipOutputNode.adoc[WebRTCWhipOutputNode]> | some comment here
+|localWebRTC a|
+[unstyled]
+* [yellow]#settings#: LocalWebRTCOutputSettings
+|Promise<xref:LocalWebRTCOutputNode.adoc[LocalWebRTCOutputNode]> | some comment here
+|===
+
+Again, each constructor takes some configuration and returns a media node capable of processing the stream type indicated by the constructor function name.  This output object is then passed to Norsk so that it can subscribe to the input.
+
+[source,TypeScript]
+----
+  localRtcOutput.subscribe([{ source: input, sourceSelector: selectAV }]);
+----
+
+.Question
+===
+Won't all interfaces shown above need to be exported?
+===

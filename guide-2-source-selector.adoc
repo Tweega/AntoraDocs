@@ -26,7 +26,7 @@ const selectAV(streams: StreamMetadata[]) => {
   }
 ----
 
-The logic implemented here is arbitrary, and in this case, simple.  It states that if Norsk indicates that it has exactly one audio and one video signal, then it should forward both streams.  However, you can implement any logic here that meets your business requirements, which might for example be to always favour a particular named stream if it is available.
+The logic implemented here is arbitrary, and in this case, simple.  It states that if Norsk indicates that it has exactly one audio and one video signal, then it should forward both streams; otherwise nothing is forwarded.  However, you can implement any logic here that meets your business requirements.  We will implement some more complex (if still arbitrary) rules in later examples.
 
 The functions audioStreamKeys, and videoStreamKeys are simple helper functions on the sdk which filter the streams list to only those that are audio streams or video streams respectively.  There's also one called subtitleStreams.
 
@@ -37,3 +37,5 @@ The key/identifier for each stream is set by you when you configure a stream sou
 ----
     let rtmpSettings = { id: "rtmpInput", port: argv.port };  
 ----
+
+Working code for this example can be found in main.ts under the function rtmp_to_rtc

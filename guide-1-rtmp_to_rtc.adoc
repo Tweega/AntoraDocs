@@ -43,4 +43,4 @@ async function rtmp_to_rtc(argv: Arguments): Promise<void> {
 }
 ----
 
-That's nearly the whole story.  What is missing is the code that Norsk-Live needs to implement in order to tell the Norsk Server which streams to pass on to the delivery target (in this case the RTC Web Server).  This code is given to Norskas a callback specified by the sourceSelector attribute, which is described in the next page.
+That's nearly the whole story.  What is missing is the code that Norsk-Live needs to implement in order to tell the Norsk Server which streams to pass on to the delivery target (in this case the RTC Web Server).  This code is given to Norsk as a callback specified by the sourceSelector attribute, which is described in the next page.

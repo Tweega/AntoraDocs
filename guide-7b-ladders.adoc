@@ -1,0 +1,193 @@
+== Video resolution ladders
+
+Up till now, when configuring output targets for Norsk to deliver and and video streams to, we have not specified the resolution at which video should be forwarded.  The default is the same resolution as the input (check tk).  However, this can be changed using by configuring resolution ladders, which are lists of resolutions that you want to support, and which will allow end viewers to select the resolution that most closely matches their local hardware and network bandwidth (browsers normally do this automatically).
+
+One consequence of using ladders is that whereas each camera has up to now been the source of a single video stream, Norsk now turns that into multiple streams, so that when Norsk calls the source-selector callback on the client, it will supply a list of streamMediaMetaData objects, with IDs taken from the name attribute of a H264LadderStream object.   Following the metaphor of a ladder, each H264LadderStream is a rung, and a list of H264LadderStream objects is a ladder.  It is defined below:
+
+[source,TypeScript]
+----
+interface H264LadderStream {
+    name: string;
+    width: number;
+    height: number;
+    bitrate: number;
+    frameRate: FrameRate;
+    codec: X264Codec;
+}
+----
+
+=== Ladder example
+
+[source,TypeScript]
+----
+let ladderRungs = [
+{
+    name: "medium",
+    width: 320,
+    height: 240,
+    frameRate: { frames: 25, seconds: 1 },
+    bitrate: 250000,
+    codec: new X264Codec()
+                .setKeyFrameIntervalMax(new X264Int().setValue(50))
+                .setKeyFrameIntervalMin(new X264Int().setValue(50))
+                .setBframes(new X264Int().setValue(0))
+                .setSceneCut(new X264Int().setValue(0))
+}
+];
+----
+
+X264Codecs are xref:X264Codec.adoc[defined here], and discussed in more detail xref:X264Codec.adoc[here]
+
+
+Once again, the following code 
+
+* Configures a single signal source (this time just a plain image made to mimic a video stream)
+** Configures a ladder specifying the resolutions that the Norsk server should split input signals into (just one here,labelled medium)
+* Configures 2 target destinations for the signal 
+** One target receives all streams defined in the ladder
+** A second target receives only the stream from the rung labelled medium
+* Gets a connection to Norsk
+** Gives Norsk source and target configurations
+** Gives Norsk a callback function specifying that both audio and video are to be sent to the target.  Norsk will call this function when it has 'discovered' the sources given to it in the input configuration.
+
+
+[source,TypeScript]
+----
+async function image_source(argv: Arguments): Promise<void> {
+  const norsk = new Norsk(baseUrl());
+  let fileName = doFindMedia(argv);
+
+  // turn an image file into a stream source
+  let input = await norsk.input.imageFile({ fileName, sourceName: "source" });
+
+  // specify supported resolutions
+  let ladderRungs = [
+    {
+      name: "medium",
+      width: 320,
+      height: 240,
+      frameRate: { frames: 25, seconds: 1 },
+      bitrate: 250000,
+      codec: new X264Codec()
+                  .setKeyFrameIntervalMax(new X264Int().setValue(50))
+                  .setKeyFrameIntervalMin(new X264Int().setValue(50))
+                  .setBframes(new X264Int().setValue(0))
+                  .setSceneCut(new X264Int().setValue(0))
+    }
+  ];
+
+  //this object provides the ladder with a label
+  let ladderSettings = {
+    id: "ladder",
+    streams: ladderRungs,
+  };
+  
+  // this is the sourceSelector callback function that will be passed to the
+  // hls output object on the server
+  let ladderItem = (desiredRendition: string) => (streams: StreamMetadata[]) => {
+    const video = videoStreamKeys(streams);
+    if (video.length == ladderRungs.length) {
+      return { video: video.filter((k) => k.getRenditionName().getRenditionName() == desiredRendition) };
+    }
+    return undefined;
+  };
+
+  // hls streams can get chopped up and put back together later
+  // the playlistName attribute is a label that helps with the reassembly process
+  let masterPlaylistSettings = { id: "master", playlistName: "master" };
+
+  // create the infrastructure on the Norsk server to split input into multiple streams
+  // as per specifications in the ladder
+  let abrLadder = await norsk.transform.h264Ladder(ladderSettings);
+
+  // subscribe this ladder to the input with callback (selectVideo) that checks
+  // that there is a single video source (this logic is customer-specific)
+  // our ladder only has one resolution defined, so we will only get one StreamMediaMetadata
+  // object passed into this callback, otherwise the logic would mean that no streams 
+  // got sent to the target - check tk
+  abrLadder.subscribe([{ source: input, sourceSelector: selectVideo }]);
+
+  let delayOutputMs = 500.0; 
+
+  // create an hlsMaster output node
+  let masterOutput = await norsk.output.hlsMaster(masterPlaylistSettings);
+
+
+  // I think we should rename medium here to hlsSettings and id should not be medium unless it 
+  // really links to other medium label on line 127
+  // hls server needs to know how finely to chop up incoming segments
+  let hlsSettings = { id: "medium", partDurationSeconds: 1.0, segmentDurationSeconds: 4.0, delayOutputMs }
+
+
+  // hlsOutput? instead of mediumOutput tk
+  let hlsOutput = await norsk.output.hlsVideo(hlsSettings);
+
+  // connect the laddered stream(s) to hlsOutput with a callback function that tells Norsk 
+  // to forward only the resolution rung labelled "medium"
+  // subscribe hls target to the laddered input(s), filtering on the stream labelled "medium"
+  // we will be able to view this stream on tk  url
+  mediumOutput.subscribe([
+    { source: abrLadder, sourceSelector: ladderItem("medium") },
+  ]);
+
+  // TODO this may be not working (404) due to no audio source
+  // subscribe the master output to all streams 
+  masterOutput.subscribe([
+    { source: abrLadder, sourceSelector: selectAllVideos(ladderRungs.length) }
+  ]);
+
+  logLocalHlsUrl(masterOutput.id);
+  console.log("Media playlist", "http://localhost:6791/localHls/file/stream/1-medium/playlist.m3u8");
+}
+----
+
+
+
+
+The next exercise is to switch between video sources in real-time. We will have 2 cameras and implement some logic so that we can tell Norsk to change which signal is sent to the destination sink/target  (xref:NodeSettings.adoc[configuring the Norst playground for an srt source]) 
+
+There is quite a lot more code involved here, but a lot of that is related to creating a UI from which to control the camera switching.  The Norsk side of that is fairly straight forward.
+
+[source,TypeScript]
+----
+const norsk = new Norsk("localhost:6790");
+
+let camera1 = await norsk.input.srt(srtCamera1Settings);
+let camera2 = await norsk.input.srt(srtCamera2Settings);
+
+let sourceSwitcher = await norsk.control.sourceSwitcher(sourceSwitcherSettings);
+
+sourceSwitcher.subscribe([
+  { source: camera1, sourceSelector: avReady },
+  { source: camera2, sourceSelector: avReady },
+]);
+
+let localRtcOutput = await norsk.output.localWebRTC(rtcOutputSettings);
+
+localRtcOutput.subscribe([{ source: sourceSwitcher, sourceSelector: avReady }]);
+----
+
+If you have read through the earlier code walk-throughs you will see that very little has changed.  We have configured 2 srt sources, and instead of calling norsk.input, we call norsk.control, which currently only has one api function
+
+== Interface NorskControl
+:table-caption!:
+:example-caption!:
+[cols="15%,35%, 15%, 35%"]
+|===
+|Method |Parameters |Return value |Comment
+|sourceSwitcher a|
+[unstyled]
+* [yellow]#settings#: SourceSwitcherSettings
+|Promise<SourceSwitcherNode> | some comment here
+|===
+
+The constructor function expects a SourceSwitcherSettings object, which looks like this
+
+[source,TypeScript]
+----
+interface SourceSwitcherSettings extends NodeSettings {
+    activeSource: string;
+    outputSource: string;
+}
+// where NodeSettings specifies an id field which is a string
+----

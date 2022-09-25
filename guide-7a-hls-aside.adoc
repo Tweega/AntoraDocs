@@ -1,0 +1,5 @@
+== An aside on HLS
+
+The code example coming up references
+
+image::hls-architecture.png[alt="hls-architecture.png"]
