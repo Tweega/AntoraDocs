@@ -1,8 +1,16 @@
 == Video resolution ladders
 
-Up till now, when configuring output targets for Norsk to deliver and and video streams to, we have not specified the resolution at which video should be forwarded.  The default is the same resolution as the input (check tk).  However, this can be changed using by configuring resolution ladders, which are lists of resolutions that you want to support, and which will allow end viewers to select the resolution that most closely matches their local hardware and network bandwidth (browsers normally do this automatically).
+Up till now, when configuring output targets for Norsk to deliver audio and video streams to, we have not specified the resolution at which video streams should be forwarded.  The default is the same resolution as the input (check tk).  However, this can be changed by configuring resolution ladders, which are lists of resolutions that you want to support.
 
-One consequence of using ladders is that whereas each camera has up to now been the source of a single video stream, Norsk now turns that into multiple streams, so that when Norsk calls the source-selector callback on the client, it will supply a list of streamMediaMetaData objects, with IDs taken from the name attribute of a H264LadderStream object.   Following the metaphor of a ladder, each H264LadderStream is a rung, and a list of H264LadderStream objects is a ladder.  It is defined below:
+One consequence of using ladders is that whereas each camera has up to now been the source of a single video stream, Norsk now turns that into multiple streams.  A single label, such as 'camera1' will no longer be sufficient to identify a specific stream.  When Norsk calls the xref:X264Codec.adoc[sourceSelector] callback, passing in the list of xref:X264Codec.adoc[StreamMetadata] objects that describe the streams it has successfully identified, the names of the sources will reflect their resolutions also
+
+
+
+See section on xref:X264Codec.adoc[4 part names].
+
+
+
+So that when Norsk calls the sourceSelector callback on the client, it will supply a list of streamMediaMetaData objects, with IDs taken from the name attribute of a H264LadderStream object.   Following the metaphor of a ladder, each H264LadderStream is a rung, and a list of H264LadderStream objects is a ladder.  It is defined below:
 
 [source,TypeScript]
 ----

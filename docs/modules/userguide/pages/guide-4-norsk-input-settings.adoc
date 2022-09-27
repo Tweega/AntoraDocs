@@ -1,0 +1,81 @@
+== Creating inputs
+
+Inputs are created by calling a function under the norsk.input object, for example
+
+[source,TypeScript]
+----
+    let input = await norsk.input.rtmpServer(rtmpSettings);
+----
+
+The list of input constructors available under norsk.input are shown below along with the configuration settings object that each requires.
+
+:table-caption!:
+:example-caption!:
+[cols="15%,35%, 15%, 35%"]
+|===
+|Method |Parameters |Return value |Comment
+|rtmpServer a|
+[unstyled]
+* [yellow]#settings#: RtmpServerInputSettings
+|Promise<xref:RtmpServerInputNode.adoc[RtmpServerInputNode]> | some comment here
+|localTsFile a|
+[unstyled]
+* [yellow]#settings#: LocalFileInputSettings
+|Promise<TsFileSourceNode> | some comment here
+|srt a|
+[unstyled]
+* [yellow]#settings#: SrtInputSettings
+|Promise<SrtSourceNode> | some comment here
+|whip a|
+[unstyled]
+* [yellow]#settings#: WhipInputSettings
+|Promise<WhipSourceNode> | some comment here
+|m3u8Media a|
+[unstyled]
+* [yellow]#settings#: M3u8MediaInputSettings
+|Promise<M3u8SourceNode> | some comment here
+|udpTs a|
+[unstyled]
+* [yellow]#settings#: RemoteInputSettings
+|Promise<UdpTsSourceNode> | some comment here
+|localWebVttFile a|
+[unstyled]
+* [yellow]#settings#: LocalFileInputSettings
+|Promise<WebVttFileSourceNode> | some comment here
+|imageFile a|
+[unstyled]
+* [yellow]#settings#: LocalFileInputSettings
+|Promise<ImageFileSourceNode> | some comment here
+|===
+
+
+== Source Configuration
+
+Source configuration is defined hierarchically in the sdk, with all nodes (things that process stream data) requiring an id, all inputs require a source name, and external inputs require an ip address and port number.  Other input types require additional data; srt streams, for instance, need to know if the stream will be pushed to the Norsk server, or pulled from it.  The following settings definitions are defined in the sdk
+
+[source,TypeScript]
+----
+export interface NodeSettings {
+    id?: string;
+}
+export interface InputSettings extends NodeSettings {
+    sourceName: string;
+}
+export interface RemoteInputSettings extends InputSettings {
+    ip: string;
+    port: number;
+}
+interface SrtInputSettings extends RemoteInputSettings {
+    mode: SrtMode;  //SrtMode.PULL | SrtMode.PUSH
+}
+interface LocalFileInputSettings extends InputSettings {
+    fileName: string;
+}
+interface WhipInputSettings extends InputSettings {
+    // same as InputSettings 
+}
+interface M3u8MediaInputSettings extends InputSettings {
+    url: string;
+}
+----
+

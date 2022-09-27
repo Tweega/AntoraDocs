@@ -1,0 +1,75 @@
+== Creating outputs
+
+Outputs are created by calling a function under the norsk.output object, for example
+
+[source,TypeScript]
+----
+    let localRtcOutput = await norsk.output.localWebRTC(localRtcSettings);
+----
+
+The list of output constructors available under norsk.output are shown below along with the configuration settings object that each requires.
+
+:table-caption!:
+:example-caption!:
+[cols="15%,35%, 15%, 35%"]
+|===
+|Method |Parameters |Return value |Comment
+|hlsVideo a|
+[unstyled]
+* [yellow]#settings#: HlsVideoOutputSettings
+|Promise<HlsVideoOutputNode> | some comment here
+|hlsAudio a|
+[unstyled]
+* [yellow]#settings#: HlsAudioOutputSettings
+|Promise<HlsAudioOutputNode> | some comment here
+|hlsWebVtt a|
+[unstyled]
+* [yellow]#settings#: HlsWebVttOutputSettings
+|Promise<HlsWebVttOutputNode> | some comment here
+|hlsMaster a|
+[unstyled]
+* [yellow]#settings#: HlsMasterOutputSettings
+|Promise<xref:HlsMasterOutputNode.adoc[HlsMasterOutputNode]> | some comment here
+|webRTCWhip a|
+[unstyled]
+* [yellow]#settings#: WebRTCWhipOutputSettings
+|Promise<xref:WebRTCWhipOutputNode.adoc[WebRTCWhipOutputNode]> | some comment here
+|localWebRTC a|
+[unstyled]
+* [yellow]#settings#: LocalWebRTCOutputSettings
+|Promise<xref:LocalWebRTCOutputNode.adoc[LocalWebRTCOutputNode]> | some comment here
+|===
+
+
+== Output Configuration
+
+As with source configuration, target configuration  is defined hierarchically in the sdk, with all outputs also requiring an id, with additional fields required for other output types.  The following settings definitions are defined in the sdk
+
+[source,TypeScript]
+----
+export interface NodeSettings {
+    id?: string;
+}
+interface LocalWebRTCOutputSettings extends NodeSettings {
+    numVideoStreams: number;
+}
+interface HlsMasterOutputSettings extends NodeSettings {
+    playlistName: string;
+}
+interface HlsVideoOutputSettings extends NodeSettings {
+    segmentDurationSeconds: number;
+    partDurationSeconds: number;
+    delayOutputMs: number;
+}
+interface HlsWebVttOutputSettings extends NodeSettings {
+    segmentDurationSeconds: number;
+    delayOutputMs: number;
+}
+interface SourceSwitcherSettings extends NodeSettings {
+    activeSource: string;
+    outputSource: string;
+}
+interface H264LadderSettings extends NodeSettings {
+    streams: H264LadderStream[];
+}
+----

@@ -1,0 +1,88 @@
+== Configuring HLS inputs
+
+HTTP live streaming (HLS) is an adaptive bitrate streaming protocol that can deliver content at different quality levels, such as 480p, 720p, or 1080p, depending on the content quality of the original video and the end user’s internet connection.
+
+Behind the scenes it breaks large video files into smaller downloadable HTTP files (with extension .m3u8), which then allows them to be delivered using the HTTP protocol.
+
+So configuring HLS is a bit more involved than rtmp or srt.
+
+== Configuring rendition ladders
+
+Each resolution level is called a _rendition_ and is specified using an object called H264LadderStream 
+
+[source,TypeScript]
+----
+interface H264LadderStream {
+  name: string;
+  width: number;
+  height: number;
+  bitrate: number;
+  frameRate: FrameRate;
+  codec: X264Codec;
+}
+----
+
+where a framerate is defined as
+
+[source,TypeScript]
+----
+interface FrameRate {
+  frames: number;
+  seconds: number;
+}
+----
+
+Here's an example of a ladder with only one rendition defined
+
+[source,TypeScript]
+----
+    let ladder = [
+        {
+        name: "medium",
+        width: 320,
+        height: 240,
+        frameRate: { frames: 25, seconds: 1 },
+        bitrate: 250000,
+        codec: new X264Codec()
+                    .setKeyFrameIntervalMax(new X264Int().setValue(50))
+                    .setKeyFrameIntervalMin(new X264Int().setValue(50))
+                    .setBframes(new X264Int().setValue(0))
+                    .setSceneCut(new X264Int().setValue(0))
+        },
+        // more renditions
+    ]
+----
+
+We'll look more closely at hls source configuration in the next episode, but once a ladder is defined, it needs to subscribe to a video source.  However, all we have at the moment is some configuration.  We need to turn that into an object that can encode a stream into different resolutions.  We do that with a norsk.transform
+
+[source,TypeScript]
+----
+    // create a H264LadderSettings object which allows us to define a name for this stream source (here 'ladder')
+    let ladderSettings = {
+        id: "ladder",
+        streams: ladder,
+    };
+    // and transform it into a stream encoder
+    let abrLadder = await norsk.transform.h264Ladder(ladderSettings);
+----
+
+abrLadder then subscribes to an input source, from which it will generate the various renditions requested in the config
+
+[source,TypeScript]
+----
+  abrLadder.subscribe([{ source: input, sourceSelector: selectVideo }]);
+----
+
+abrLadder is now a stream consumer and a stream(s) producer.  We can send output from it to, say, an rtc web server.
+
+[source,TypeScript]
+----
+    let localRtcOutput = await norsk.output.localWebRTC(localRtcSettings);
+    localRtcOutput.subscribe([
+        { source: abrLadder, sourceSelector: selectAllVideos(ladder.length) },
+        { source: audioInput, sourceSelector: selectAudio },
+    ]);
+----
+
+where selectAllVideos is a function from StreamMetadata[] to StreamKey[] specifiying that if Norsk has identified the correct number of streams following ladder encoding, then it should forward all streams.  - question - is that correct? - other examples return an object with pins as keys to arrays tk
+

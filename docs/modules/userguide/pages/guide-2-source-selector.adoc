@@ -1,0 +1,108 @@
+== Handling messages from Norsk
+
+Revisiting the rtmp_to_rtc function, introduced on the previous page,the last line connected an audio-video source to a rtc web server
+
+[source,TypeScript]
+----
+    // connect the web server receiver to the video input 
+    localRtcOutput.subscribe([{ source: input, sourceSelector: selectAV }]);
+----
+
+The sourceSelector attribute references a callback function whose job it is to indicate which of a set of streams the Norsk Server has detected as inputs should be forwarded to the specified target(s).  When Norsk Server detects a change in the set of known inputs, it calls this function, providing details about each detected streams in a class called xref:NodeSettings.adoc[StreamMetadata]. This class has a function getStreamKey which returns an identifier for this stream, which is a class called xref:NodeSettings.adoc[StreamKey]. 
+
+The callback function should return the StreamKey for each stream that it wants the Norsk server to forward to the target.  Specifically, it should return an object containing up labelled lists of streams.  For basic applications these labels will be one of 'audio', 'video', or 'subtitle'.  Our sample app does not include subtitles, so does not include that field.
+
+Here is a sample implementation for selectAV
+
+[source,TypeScript]
+----
+  const selectAV = (streams: StreamMetadata[]) => {
+    const audio: StreamKey[] = audioStreamKeys(streams); // calls getStreamKey on each StreamMetadata
+    const video: StreamKey[] = videoStreamKeys(streams); // ditto
+    if (audio.length == 1 && video.length == 1) {
+      return { audio: audio, video: video }; // returns keys of streams to send to target
+    }
+    return undefined;
+  };
+----
+
+The logic implemented here is arbitrary, and in this case, simple.  It states that if Norsk indicates that it has exactly one audio and one video signal, then it should forward both streams; otherwise nothing is forwarded.  However, you can implement any logic here that meets your business requirements.  
+
+The functions audioStreamKeys and videoStreamKeys are simple helper functions on the sdk which filter the streams list to only those that are audio streams or video streams respectively.  There is also one called subtitleStreamKeys.
+
+Working code for this example can be found in main.ts under the function rtmp_to_rtc
+
+
+=== Stream keys
+As noted, each of audio:, video:, subtitles reference a list of StreamKey objects, which look like this
+
+[source,TypeScript]
+----
+  {
+      sourceName?: SourceName.AsObject, //object wrapper around a string
+      programNumber?: ProgramNumber.AsObject, //object wrapper around a number
+      streamId?: StreamId.AsObject, //object wrapper around a number
+      renditionName?: RenditionName.AsObject, //object wrapper around a string
+  }
+----
+
+
+*SourceName*
+A string provided by your code. For example, "camera1", "Studio RTMP Input", "Bob's SRT Encoder, or -as in the example looked at from the example just looked at, "rtmpInput"
+[source,TypeScript]
+----
+    let rtmpSettings = { id: "rtmpInput", port: argv.port };  
+----
+
+*programNumber*
+A number identifying the program within the source. This exists to support multi-program capable sources, such as a multi-program transport stream, in which case it is the source that allocates the ProgramNumber. For single-program sources such as RTMP, the ProgramNumber is always '1'.
+
+*streamId*
+A number identifying the stream within the program. This is allocated by the source.
+
+*renditionName*
+A string provided by your code. Any media may exist in multiple renditions – a good example is that of an ABR ladder for a video stream, where there are many streams of differing qualities, but they are all of the same content. In this example, your code may choose to name the renditions "low", "medium", or "high". For streams received from a source Media Node where no additional configuration has been provided, the RenditionName is "default". 
+
+=== The need for 4 part stream names
+One input type supported by Nosrk is that of Transport Streams (TS). In case you are not familiar these, one TS can contain multiple programs (think BBC1, BBC2 etc...) and each program can contain multiple streams of data. Typically that's one video stream and one audio stream but it can be zero or more video / audio / subtitle / data / ... streams. Multiple audios are certainly very common (English and Spanish audio / commentary and stadium sound separately etc.)
+
+If you are manipulating a media stream, it is also common to have multiple versions of the same media - for example "high", "medium" and "low" video qualities in an ABR ladder. It's the same content - just different renditions of it.
+
+That's how Norsk™ identifies a Stream - it is a combination of all of the above - plus a Source Name provided by the developer ("rtmpInput" in the example on the previous page). The source name allows Norsk to distinguish between various sources of the same type (e.g. multiple WebRTC inputs).
+
+The good news is, you now know how Norsk™ describes all streams. TS is as complex as it gets and we use the below naming strategy for all streams regardless of whether they are from TS, WebRTC, SRT, MP4, fMP4... 
+
+== Context changes
+
+The list of StreamMetadata objects passed in to the sourceSelector callback function is collectively termed "context".
+
+The selectAV function shown above only takes account of the number of video and audio streams passed in by Norsk.  Some business decisions may require a closer look at what is in these StreamMetadata objects.  These contain:
+
+  * the StreamKey, described above
+  * the stream type (e.g. audio/video)
+  * relevant stream metadata (e.g, sample rate/resolution)
+
+It is very common to make decisions based on this Context information. In particular whenever Context changes you might want to consider how your subscriptions between your Media Nodes are set up (start publishing, stop publishing, switch from one camera to another...) as now the code knows what StreamKeys are available.
+
+When a Context message is sent, Norsk pauses the output of the Media Node whose context has changed and does not restart it until your code acknowledges the change. That way, subscriptions can be set up in such a way as to not drop any media and to make frame accurate changes to your outputs in response to changing circumstances. 
+
+For example say your source goes from having a single audio in it to now having two. You could walk through the language descriptors (also in the context) and if there is a Spanish language audio, subscribe to it; failing that choose an English stream and failing that use the stream with the lowest StreamId (or swap to a silence, or stop the publication, or send an email, or... It's your business rules and your code - go wild!). 
+
+== StreamMetadata
+
+When serialised, StreamMetadata objects have this shape, with video, audio and subtitle streams all having their own metadata.
+[source,TypeScript]
+----
+  {
+    streamKey?: StreamKey.AsObject,
+    audio?: StreamMetadata.AudioMetadata.AsObject,
+    video?: StreamMetadata.VideoMetadata.AsObject,
+    subtitle?: StreamMetadata.SubtitleMetadata.AsObject,
+  }
+----
+
+
+* xref:NodeSettings.adoc[AudioMetadata.AsObject]
+* xref:NodeSettings.adoc[VideoMetadata.AsObject]
+* xref:NodeSettings.adoc[SubtitleMetadata.AsObject]
+

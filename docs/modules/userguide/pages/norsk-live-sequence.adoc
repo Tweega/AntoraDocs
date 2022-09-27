@@ -1,0 +1,8 @@
+== A Basic Norsk workflow
+
+The structure of a basic Norsk-Live application is illustrated below, with the step names shown in blue in the central column.
+
+image::norsk-sequence.png[alt="norsk-sequence.png"]
+
+
+

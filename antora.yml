@@ -4,7 +4,7 @@ site:
 content:
   sources: 
   - url: https://github.com/Tweega/AntoraDocs.git
-    branches: HEAD
+    branches: cpr
     start_path: docs
 ui: 
   bundle:
