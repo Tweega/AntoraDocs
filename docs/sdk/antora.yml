@@ -1,7 +1,7 @@
-name: antora
+name: norsk-sdk
 version: '3.1'
 prerelease: false
-title: Antora
+title: Norsk SDK
 asciidoc:
   attributes:
     source-language: asciidoc@

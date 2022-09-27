@@ -1,7 +1,7 @@
-name: antora
+name: norsk-api
 version: '3.1'
 prerelease: false
-title: Antora
+title: Anorsk API
 asciidoc:
   attributes:
     source-language: asciidoc@
