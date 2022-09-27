@@ -1,7 +1,7 @@
-name: norsk
+name: norsk-userguide
 version: '0.1'
 prerelease: false
-title: Norsk
+title: Norsk User Guide
 asciidoc:
   attributes:
     source-language: asciidoc@

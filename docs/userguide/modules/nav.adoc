@@ -1,7 +1,7 @@
 .User Guide
-* xref:norsk-intro-2.adoc[Introduction to Norsk]
-* xref:norsk-live-sequence.adoc[Application flow]
-* xref:guide-1a-rtmp_to_rtc.adoc[Hello Norsk]
+* xref:norsk-sdk:userguide:norsk-intro-2.adoc[Introduction to Norsk]
+* xref:modules/norsk-live-sequence.adoc[Application flow]
+* xref:./pages/guide-1a-rtmp_to_rtc.adoc[Hello Norsk]
 * xref:guide-2-source-selector.adoc[Context changes]
 * xref:guide-4-norsk-input-settings.adoc[Defining inputs]
 * xref:guide-5-norsk-output-settings.adoc[Defining outputs]
