@@ -1,3 +1,0 @@
-* xref:welcome-to-norsk.adoc[]
-* xref:install-and-run-quickstart.adoc[]
-* xref:features.adoc[]
