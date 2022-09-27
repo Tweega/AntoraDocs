@@ -1,7 +1,7 @@
-name: antora
-version: '3.1'
+name: norsk
+version: '0.1'
 prerelease: false
-title: Antora
+title: Norsk
 asciidoc:
   attributes:
     source-language: asciidoc@
