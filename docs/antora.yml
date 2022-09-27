@@ -1,7 +1,7 @@
-name: norsk-sdk
+name: antora
 version: '3.1'
 prerelease: false
-title: Norsk SDK
+title: Antora
 asciidoc:
   attributes:
     source-language: asciidoc@
@@ -21,3 +21,6 @@ asciidoc:
     
 nav:
 - modules/ROOT/nav-start.adoc
+- modules/userguide/modules/nav.adoc
+- modules/api/modules/nav.adoc
+- modules/sdk/modules/nav.adoc

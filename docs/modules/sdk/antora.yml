@@ -1,7 +1,7 @@
-name: norsk-api
+name: norsk-sdk
 version: '3.1'
 prerelease: false
-title: Anorsk API
+title: Norsk SDK
 asciidoc:
   attributes:
     source-language: asciidoc@
@@ -16,8 +16,8 @@ asciidoc:
     url-chat: https://chat.antora.org
     url-repo: https://gitlab.com/antora/antora
     url-asciidoc: https://docs.asciidoctor.org/asciidoc/latest
-    page-pagination: false
+    page-pagination: true
 
     
 nav:
-- modules/ROOT/nav-start.adoc
+- modules/nav.adoc

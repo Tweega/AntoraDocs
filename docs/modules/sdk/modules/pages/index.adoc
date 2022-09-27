@@ -1,0 +1,11 @@
+= Norsk Documentation
+:keywords: Norsk Live, Video streaming, Green box, 
+
+[discrete.tagline]
+=== Developing applications for Norsk Live
+  This is a guide to customising Norsk applications to provide production-room control over live video and audio streams.  This customisation can be done via a language-specific SDK.
+  
+  The full list of supported languages is ..
+
+  * Typescript
+
