@@ -1,0 +1,5 @@
+= Install and Run Norsk-Live Quickstart
+:listing-caption!:
+:url-demo: https://gitlab.com/antora/demo
+
+This quickstart walks you through the initial steps required to install Norsk and generate your first application
