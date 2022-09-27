@@ -2,15 +2,7 @@
 
 Up till now, when configuring output targets for Norsk to deliver audio and video streams to, we have not specified the resolution at which video streams should be forwarded.  The default is the same resolution as the input (check tk).  However, this can be changed by configuring resolution ladders, which are lists of resolutions that you want to support.
 
-One consequence of using ladders is that whereas each camera has up to now been the source of a single video stream, Norsk now turns that into multiple streams.  A single label, such as 'camera1' will no longer be sufficient to identify a specific stream.  When Norsk calls the xref:X264Codec.adoc[sourceSelector] callback, passing in the list of xref:X264Codec.adoc[StreamMetadata] objects that describe the streams it has successfully identified, the names of the sources will reflect their resolutions also
-
-
-
-See section on xref:X264Codec.adoc[4 part names].
-
-
-
-So that when Norsk calls the sourceSelector callback on the client, it will supply a list of streamMediaMetaData objects, with IDs taken from the name attribute of a H264LadderStream object.   Following the metaphor of a ladder, each H264LadderStream is a rung, and a list of H264LadderStream objects is a ladder.  It is defined below:
+A set of resolution specifications is called a ladder and is made up of a list of H264LadderStream objects.
 
 [source,TypeScript]
 ----
@@ -24,40 +16,7 @@ interface H264LadderStream {
 }
 ----
 
-=== Ladder example
-
-[source,TypeScript]
-----
-let ladderRungs = [
-{
-    name: "medium",
-    width: 320,
-    height: 240,
-    frameRate: { frames: 25, seconds: 1 },
-    bitrate: 250000,
-    codec: new X264Codec()
-                .setKeyFrameIntervalMax(new X264Int().setValue(50))
-                .setKeyFrameIntervalMin(new X264Int().setValue(50))
-                .setBframes(new X264Int().setValue(0))
-                .setSceneCut(new X264Int().setValue(0))
-}
-];
-----
-
-X264Codecs are xref:X264Codec.adoc[defined here], and discussed in more detail xref:X264Codec.adoc[here]
-
-
-Once again, the following code 
-
-* Configures a single signal source (this time just a plain image made to mimic a video stream)
-** Configures a ladder specifying the resolutions that the Norsk server should split input signals into (just one here,labelled medium)
-* Configures 2 target destinations for the signal 
-** One target receives all streams defined in the ladder
-** A second target receives only the stream from the rung labelled medium
-* Gets a connection to Norsk
-** Gives Norsk source and target configurations
-** Gives Norsk a callback function specifying that both audio and video are to be sent to the target.  Norsk will call this function when it has 'discovered' the sources given to it in the input configuration.
-
+=== Norsk-Live app with a Ladder
 
 [source,TypeScript]
 ----
@@ -69,7 +28,7 @@ async function image_source(argv: Arguments): Promise<void> {
   let input = await norsk.input.imageFile({ fileName, sourceName: "source" });
 
   // specify supported resolutions
-  let ladderRungs = [
+  let ladder = [
     {
       name: "medium",
       width: 320,
@@ -87,7 +46,7 @@ async function image_source(argv: Arguments): Promise<void> {
   //this object provides the ladder with a label
   let ladderSettings = {
     id: "ladder",
-    streams: ladderRungs,
+    streams: ladder,
   };
   
   // this is the sourceSelector callback function that will be passed to the
