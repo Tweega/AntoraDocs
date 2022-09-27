@@ -4,8 +4,8 @@ site:
 content:
   sources: 
   - url: https://github.com/Tweega/AntoraDocs.git
-    branches: cpr
-    start_path: docs
+    branches: multi
+    start_paths: docs/userguide, docs/api, docs/sdk
 ui: 
   bundle:
     url: ./ui-bundle.zip

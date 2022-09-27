@@ -21,5 +21,3 @@ asciidoc:
     
 nav:
 - modules/ROOT/nav-start.adoc
-- modules/userguide/nav.adoc
-- modules/api/nav.adoc
