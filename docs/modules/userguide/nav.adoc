@@ -7,5 +7,7 @@
 * xref:guide-5-norsk-output-settings.adoc[Defining outputs]
 * xref:guide-3-srt_to_rtc.adoc[Hello again, Norsk]
 * xref:guide-7a-hls-aside.adoc[HLS]
-* xref:guide-7b-ladders.adoc[Ladders]
-
+** xref:guide-7a-hls-aside.adoc[HLS Inputs]
+*** xref:guide-7b-ladders.adoc[Ladders]
+*** xref:guide-under-construction.adoc[Playlists]
+** xref:guide-under-construction.adoc[HLS outputs]
